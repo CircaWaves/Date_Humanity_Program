@@ -169,7 +169,7 @@
         <h2 class="text-2xl font-bold text-slate-800">데이터 대시보드</h2>
         <p class="text-slate-500">1,812개 댓글에서 나타난 이탈의 이유를 데이터로 먼저 확인합니다.</p>
       </div>
-       
+      
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 h-full">
           <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
@@ -242,6 +242,54 @@
             <div id="persona-content" class="text-center w-full">
                </div>
           </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 mb-8">
+        <div class="flex items-center justify-between mb-5">
+          <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
+            <span class="w-1.5 h-6 bg-amber-500 rounded-full"></span>
+            정치/행정 불만의 핵심 3가지 (언급 맥락)
+          </h3>
+          <span class="text-xs bg-slate-50 border border-slate-200 px-2 py-1 rounded text-slate-500">정치/행정 Factor 내 비중(%)</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-amber-50 border border-amber-100 rounded-2xl p-5">
+            <div class="flex items-center justify-between mb-2">
+              <p class="text-xs font-bold text-amber-700">시정불신</p>
+              <i class="fa-solid fa-ban text-amber-600"></i>
+            </div>
+            <p class="text-2xl font-black text-slate-900">30.2%</p>
+            <p class="text-sm text-slate-600 mt-2">"못 믿겠다"는 짧고 강한 비판이 반복</p>
+            <p class="text-xs text-slate-500 mt-2">전체 언급: 350건</p>
+          </div>
+          <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5">
+            <div class="flex items-center justify-between mb-2">
+              <p class="text-xs font-bold text-blue-700">정치적편향</p>
+              <i class="fa-solid fa-scale-balanced text-blue-600"></i>
+            </div>
+            <p class="text-2xl font-black text-slate-900">21.2%</p>
+            <p class="text-sm text-slate-600 mt-2">지역 정치 구도에 대한 피로감/반감</p>
+            <p class="text-xs text-slate-500 mt-2">전체 언급: 238건</p>
+          </div>
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+            <div class="flex items-center justify-between mb-2">
+              <p class="text-xs font-bold text-slate-700">리더십부재</p>
+              <i class="fa-solid fa-user-slash text-slate-600"></i>
+            </div>
+            <p class="text-2xl font-black text-slate-900">11.0%</p>
+            <p class="text-sm text-slate-600 mt-2">시장/정치인의 리더십 비판</p>
+            <p class="text-xs text-slate-500 mt-2">전체 언급: 122건</p>
+          </div>
+        </div>
+        <div class="mt-5 bg-slate-900 text-white rounded-xl p-4 flex items-start gap-3">
+          <div class="w-9 h-9 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center">
+            <i class="fa-solid fa-comment-dots"></i>
+          </div>
+          <p class="text-sm text-slate-200 leading-relaxed">
+            정치/행정 영역의 불만은 단순한 평가가 아니라, <span class="font-bold text-white">"도시가 나를 위해 움직이지 않는다"</span>는 불신으로 이어집니다.
+            이 불신은 경제·인프라 불만과 결합해 이탈 결심을 강화합니다.
+          </p>
         </div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -321,53 +369,6 @@
             </tbody>
           </table>
         </div>
-              <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 mb-8">
-        <div class="flex items-center justify-between mb-5">
-          <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
-            <span class="w-1.5 h-6 bg-amber-500 rounded-full"></span>
-            정치/행정 불만의 핵심 3가지 (언급 맥락)
-          </h3>
-          <span class="text-xs bg-slate-50 border border-slate-200 px-2 py-1 rounded text-slate-500">정치/행정 Factor 내 비중(%)</span>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="bg-amber-50 border border-amber-100 rounded-2xl p-5">
-            <div class="flex items-center justify-between mb-2">
-              <p class="text-xs font-bold text-amber-700">시정불신</p>
-              <i class="fa-solid fa-ban text-amber-600"></i>
-            </div>
-            <p class="text-2xl font-black text-slate-900">30.2%</p>
-            <p class="text-sm text-slate-600 mt-2">"못 믿겠다"는 짧고 강한 비판이 반복</p>
-            <p class="text-xs text-slate-500 mt-2">전체 언급: 350건</p>
-          </div>
-          <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5">
-            <div class="flex items-center justify-between mb-2">
-              <p class="text-xs font-bold text-blue-700">정치적편향</p>
-              <i class="fa-solid fa-scale-balanced text-blue-600"></i>
-            </div>
-            <p class="text-2xl font-black text-slate-900">21.2%</p>
-            <p class="text-sm text-slate-600 mt-2">지역 정치 구도에 대한 피로감/반감</p>
-            <p class="text-xs text-slate-500 mt-2">전체 언급: 238건</p>
-          </div>
-          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
-            <div class="flex items-center justify-between mb-2">
-              <p class="text-xs font-bold text-slate-700">리더십부재</p>
-              <i class="fa-solid fa-user-slash text-slate-600"></i>
-            </div>
-            <p class="text-2xl font-black text-slate-900">11.0%</p>
-            <p class="text-sm text-slate-600 mt-2">시장/정치인의 리더십 비판</p>
-            <p class="text-xs text-slate-500 mt-2">전체 언급: 122건</p>
-          </div>
-        </div>
-        <div class="mt-5 bg-slate-900 text-white rounded-xl p-4 flex items-start gap-3">
-          <div class="w-9 h-9 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center">
-            <i class="fa-solid fa-comment-dots"></i>
-          </div>
-          <p class="text-sm text-slate-200 leading-relaxed">
-            정치/행정 영역의 불만은 단순한 평가가 아니라, <span class="font-bold text-white">"도시가 나를 위해 움직이지 않는다"</span>는 불신으로 이어집니다.
-            이 불신은 경제·인프라 불만과 결합해 이탈 결심을 강화합니다.
-          </p>
-        </div>
-      </div>
         <div class="bg-gradient-to-br from-slate-800 to-slate-900 text-white p-6 rounded-2xl shadow-lg flex flex-col justify-center">
           <h3 class="font-bold text-lg mb-2 opacity-90 text-center">사람들의 눈에 비친 부산</h3>
           <p class="text-xs text-slate-300 text-center mb-6">댓글에서 무엇이 더 많이 <span class="font-bold text-white">언급</span>되었나</p>
@@ -464,7 +465,7 @@
             <span class="text-xs bg-slate-50 text-slate-600 border border-slate-200 px-3 py-2 rounded-xl font-bold">OFFICIAL EVIDENCE</span>
           </div>
           <div id="official-evidence" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
-          </div>
+        </div>
         <div class="bg-gradient-to-br from-slate-900 to-blue-900 text-white rounded-3xl p-8 md:p-10 shadow-2xl mb-10">
           <div class="flex items-start gap-4">
             <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-2xl">
@@ -596,7 +597,7 @@
             </div>
           </div>
         </div>
-         
+        
         <div class="mt-10 bg-gradient-to-r from-blue-900 to-slate-900 text-white rounded-3xl p-8 shadow-xl border border-slate-700">
           <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div class="flex items-start gap-4">
@@ -788,8 +789,9 @@
     };
     function renderOfficialEvidence() {
       const grid = document.getElementById("official-evidence");
-      // [수정됨] official-sources 변수 및 검사 로직 제거 (HTML 삭제로 인해 불필요)
-      if (!grid) return; 
+      // list 요소는 HTML에서 삭제되었으므로 JS에서도 참조 제거 및 체크 로직 수정
+      // const list = document.getElementById("official-sources");
+      if (!grid) return; // grid가 없으면 종료
       
       const tone = {
         blue:   { box: "bg-blue-50 border-blue-100", icon: "text-blue-600", chip: "bg-blue-600/10 text-blue-700 border-blue-200" },
@@ -826,7 +828,7 @@
         `;
       }).join("");
       
-      // [수정됨] list.innerHTML 렌더링 로직 전체 제거
+      // 아래 list 렌더링 로직은 삭제됨
     }
     // Navigation Logic
     function navigate(pageId) {
