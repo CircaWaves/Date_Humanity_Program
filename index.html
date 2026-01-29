@@ -56,7 +56,6 @@
   </nav>
 
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-screen">
-    
     <section id="page-home" class="page-section active">
       <div class="relative rounded-t-3xl overflow-hidden bg-slate-900 text-white shadow-2xl">
         <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1548231336-2244a17a3a9a?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-30"></div>
@@ -102,8 +101,14 @@
           <div class="bg-slate-800 text-slate-300 px-4 py-2 rounded-full text-sm border border-slate-700 flex items-center">
             <i class="fa-brands fa-youtube text-red-500 mr-2"></i> "연봉이랑 커리어가 안 되는데 어떻게 남아요..."
           </div>
-           <div class="bg-slate-800 text-slate-300 px-4 py-2 rounded-full text-sm border border-slate-700 flex items-center">
+          <div class="bg-slate-800 text-slate-300 px-4 py-2 rounded-full text-sm border border-slate-700 flex items-center">
             <i class="fa-brands fa-youtube text-red-500 mr-2"></i> "일자리만 있으면 내려간다. 부산은 잠만 자는 베드타운이 되었다."
+          </div>
+          <div class="bg-slate-800 text-slate-300 px-4 py-2 rounded-full text-sm border border-slate-700 flex items-center">
+            <i class="fa-brands fa-youtube text-red-500 mr-2"></i> "미분양은 세금 깎아주면서, 청년 일자리에 쓸 돈은 없나?"
+          </div>
+          <div class="bg-slate-800 text-slate-300 px-4 py-2 rounded-full text-sm border border-slate-700 flex items-center">
+            <i class="fa-brands fa-youtube text-red-500 mr-2"></i> "발 디딜 틈 없던 부산이 이제는 노인과 빈 아파트만 남았다."
           </div>
         </div>
       </div>
@@ -173,7 +178,6 @@
         <h2 class="text-2xl font-bold text-slate-800">데이터 대시보드</h2>
         <p class="text-slate-500">1,812개 댓글에서 나타난 이탈의 이유를 데이터로 먼저 확인합니다.</p>
       </div>
-
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
         <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
           <h3 class="font-bold text-lg mb-6 flex items-center gap-2">
@@ -220,7 +224,6 @@
             </div>
           </div>
         </div>
-        
         <div class="flex flex-col gap-6">
           <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex-1">
             <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
@@ -238,11 +241,11 @@
                 <button onclick="togglePersona('stayer')" id="btn-stayer" class="px-5 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-all">남는 사람</button>
               </div>
             </div>
-            <div id="persona-content" class="text-center min-h-[140px] flex items-center justify-center"></div>
+            <div id="persona-content" class="text-center min-h-[140px] flex items-center justify-center">
+            </div>
           </div>
         </div>
       </div>
-
       <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 mb-8">
         <div class="flex items-center justify-between mb-5">
           <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
@@ -290,7 +293,6 @@
           </p>
         </div>
       </div>
-
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
           <div class="flex items-center justify-between mb-6">
@@ -319,8 +321,7 @@
           <p class="text-center text-xs text-slate-400 mt-4">※ 댓글이 주로 다루는 정책 의제 영역</p>
         </div>
       </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
         <div class="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
           <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
             <h3 class="font-bold text-lg text-slate-800">핵심 불만 요인 TOP 5 (언급 횟수 순)</h3>
@@ -383,45 +384,47 @@
         </div>
       </div>
 
-      <div class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8 mb-4">
-        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
-              <span class="w-1.5 h-6 bg-red-500 rounded-full"></span>
-              현장 영상 기록
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+            <h3 class="font-bold text-lg text-slate-800 mb-4 flex items-center gap-2">
+                <span class="w-1.5 h-6 bg-red-600 rounded-full"></span>
+                현장 인터뷰: 시민들의 실제 목소리
             </h3>
-            <span class="text-xs bg-red-50 text-red-600 px-2 py-1 rounded font-bold"><i class="fa-solid fa-play mr-1"></i>Video</span>
-          </div>
-          <div class="rounded-xl overflow-hidden bg-black shadow-inner aspect-video">
-            <video controls class="w-full h-full object-cover">
-              <source src="vid.mp4" type="video/mp4">
-              브라우저가 동영상 재생을 지원하지 않습니다.
-            </video>
-          </div>
-          <p class="text-sm text-slate-500 mt-3 leading-relaxed">
-            부산 원도심 및 신규 아파트 단지의 공실 현황과 시민들의 목소리를 담은 현장 스케치입니다.
-          </p>
+            <div class="relative w-full rounded-xl overflow-hidden bg-black flex-1 flex items-center justify-center">
+                <video controls class="w-full h-auto max-h-[300px]">
+                    <source src="vid.mp4" type="video/mp4">
+                    브라우저가 동영상을 지원하지 않습니다.
+                </video>
+            </div>
+            <p class="text-sm text-slate-500 mt-4">
+                ※ 데이터 뒤에 숨겨진 뉘앙스와 감정을 확인하세요.
+            </p>
         </div>
 
-        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
-              <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>
-              디지털 스토리북 (9 Pages)
-            </h3>
-            <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded font-bold"><i class="fa-solid fa-book-open mr-1"></i>PDF</span>
-          </div>
-          <div class="rounded-xl overflow-hidden border border-slate-200 bg-slate-50 h-[300px] lg:h-[400px]"> <iframe src="story.pdf" class="w-full h-full" style="border:none;">
-              <p>브라우저가 PDF 미리보기를 지원하지 않습니다. <a href="story.pdf" class="text-blue-600 underline">여기서 다운로드</a>하세요.</p>
-            </iframe>
-          </div>
-           <div class="flex justify-between items-center mt-3">
-            <p class="text-xs text-slate-400">※ 스크롤하여 전체 내용을 확인하세요.</p>
-            <a href="story.pdf" target="_blank" class="text-xs font-bold text-blue-600 hover:underline">새 창에서 열기 <i class="fa-solid fa-external-link-alt"></i></a>
-          </div>
+        <div class="relative bg-gradient-to-br from-[#4E75F6] via-[#7B58CF] to-[#C9548E] p-8 rounded-2xl shadow-lg text-white flex flex-col justify-between overflow-hidden group">
+             <div class="absolute top-0 right-0 p-8 opacity-20 transform translate-x-4 -translate-y-4">
+                <i class="fa-solid fa-book-open text-9xl"></i>
+            </div>
+            
+            <div class="relative z-10">
+                <div class="flex items-center gap-2 mb-2">
+                     <i class="fa-solid fa-sparkles text-yellow-300"></i>
+                     <span class="text-xs font-bold tracking-widest text-white/80 uppercase">Powered by Google Gemini</span>
+                </div>
+                <h3 class="text-3xl font-black leading-tight mb-4">Busan Insight<br/>스토리북</h3>
+                <p class="text-white/90 text-lg font-light leading-relaxed mb-8 max-w-sm">
+                    1,812개의 댓글 데이터를 AI가 분석하여 재구성한 부산 청년들의 진짜 이야기. 통계가 담지 못한 서사를 만나보세요.
+                </p>
+            </div>
+            
+            <div class="relative z-10">
+                <a href="https://gemini.google.com/share/d631c7ede2a8" target="_blank" class="inline-flex items-center gap-2 bg-white text-indigo-900 px-6 py-3 rounded-xl font-bold hover:bg-indigo-50 transition transform hover:scale-105 shadow-lg">
+                    <span>스토리북 열기</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
         </div>
       </div>
-
       <div class="mt-10 bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-3xl p-8 shadow-sm">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div class="flex items-start gap-4">
@@ -637,7 +640,7 @@
             </button>
           </div>
         </div>
-      </div>
+        </div>
     </section>
 
     <section id="page-suggestion" class="page-section">
@@ -698,7 +701,6 @@
       </div>
     </section>
   </main>
-
   <footer class="bg-white border-t border-slate-200 py-10 mt-12">
     <div class="max-w-7xl mx-auto px-4 text-center">
       <div class="mb-4"><i class="fa-solid fa-chart-simple text-blue-600 text-2xl"></i></div>
@@ -710,7 +712,6 @@
       <div class="mt-8 text-xs text-slate-400">&copy; 2026 Busan Insight Project. All rights reserved.</div>
     </div>
   </footer>
-
   <script>
     // SSOT (Single Source of Truth) - Count/Percent 기반
     const SSOT = {
@@ -732,18 +733,18 @@
         polBias: 238,
         depop: 223
       },
+      // [NEW] 추가된 데이터: 태그 분포 및 정책 분야
       tagsDistribution: {
         labels: ['아파트난개발', '시정불신', '일자리부족', '정치적편향', '인구과소화', '기업부재', '교통불편', '기타'],
-        data: [352, 350, 315, 238, 223, 142, 98, 94],
+        data: [352, 350, 315, 238, 223, 142, 98, 94], // 기타는 나머지 합계 추산
         colors: ['#ef4444', '#f97316', '#3b82f6', '#6366f1', '#8b5cf6', '#ec4899', '#14b8a6', '#cbd5e1']
       },
       policyArea: {
         labels: ['경제/일자리/청년', '도시개발/주택', '정치/행정', '교통/인프라', '문화/관광', '기타'],
-        data: [712, 543, 388, 89, 45, 35],
+        data: [712, 543, 388, 89, 45, 35], // 엑셀 분석 기반 추산치
         colors: ['#3b82f6', '#ef4444', '#f59e0b', '#10b981', '#8b5cf6', '#cbd5e1']
       }
     };
-
     // ✅ OFFICIAL (자료 1 / 자료 2 기반 공식 근거 카드)
     const OFFICIAL = {
       cards: [
@@ -807,19 +808,16 @@
         { id: "O4", name: "주택 공급 가속화 패키지 – 통합심의(10→3개월), 미분양 취득세 감면 추진, 용적률 완화", ref: "자료 1", url: "" }
       ]
     };
-
     function renderOfficialEvidence() {
       const grid = document.getElementById("official-evidence");
       const list = document.getElementById("official-sources");
       if (!grid || !list) return;
-      
       const tone = {
         blue:   { box: "bg-blue-50 border-blue-100", icon: "text-blue-600", chip: "bg-blue-600/10 text-blue-700 border-blue-200" },
         indigo: { box: "bg-indigo-50 border-indigo-100", icon: "text-indigo-600", chip: "bg-indigo-600/10 text-indigo-700 border-indigo-200" },
         amber:  { box: "bg-amber-50 border-amber-100", icon: "text-amber-700", chip: "bg-amber-500/10 text-amber-700 border-amber-200" },
         slate:  { box: "bg-slate-50 border-slate-200", icon: "text-slate-700", chip: "bg-slate-700/10 text-slate-700 border-slate-300" }
       };
-
       grid.innerHTML = OFFICIAL.cards.map(c => {
         const t = tone[c.tone] || tone.slate;
         return `
@@ -848,7 +846,6 @@
           </div>
         `;
       }).join("");
-
       list.innerHTML = OFFICIAL.sources.map(s => {
         const link = s.url ? ` <a href="${s.url}" target="_blank" class="text-blue-700 font-bold underline">원문</a>` : "";
         return `
@@ -862,41 +859,32 @@
         `;
       }).join("");
     }
-
     // Navigation Logic
     function navigate(pageId) {
       document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
       document.getElementById(`page-${pageId}`).classList.add('active');
-      
       // Mobile Menu Close
       document.getElementById('mobile-menu').classList.add('hidden');
-
       // Dashboard init & resize
       if (pageId === 'dashboard') {
         initDashboardIfNeeded();
         resizeDashboardCharts();
       }
-      
       // ✅ Analysis init (Official evidence)
       if (pageId === 'analysis') {
         renderOfficialEvidence();
       }
-      
       window.scrollTo(0, 0);
     }
-
     function toggleMobileMenu() {
       document.getElementById('mobile-menu').classList.toggle('hidden');
     }
-
     // Persona Logic
     function togglePersona(type) {
       const content = document.getElementById('persona-content');
       const btnLeaver = document.getElementById('btn-leaver');
       const btnStayer = document.getElementById('btn-stayer');
-      
       if (!content || !btnLeaver || !btnStayer) return;
-
       if (type === 'leaver') {
         btnLeaver.className = "px-5 py-2 rounded-md text-sm font-bold bg-blue-600 text-white shadow-md transition-all";
         btnStayer.className = "px-5 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-all";
@@ -932,17 +920,13 @@
         `;
       }
     }
-
     // Dashboard Charts: Lazy init
     let _dashboardInitialized = false;
     let _chartInstances = [];
-
     function initDashboardIfNeeded() {
       if (_dashboardInitialized) return;
-
       // Init Persona
       togglePersona('leaver');
-
       // 1. Sentiment Chart (Doughnut)
       const sentimentCanvas = document.getElementById('sentimentChart');
       if (sentimentCanvas) {
@@ -966,8 +950,7 @@
         });
         _chartInstances.push(c1);
       }
-
-      // 2. Tags Pie Chart
+      // [NEW] 2. Tags Pie Chart
       const tagsCanvas = document.getElementById('tagsPieChart');
       if (tagsCanvas) {
         const tagsCtx = tagsCanvas.getContext('2d');
@@ -992,8 +975,7 @@
         });
         _chartInstances.push(cTags);
       }
-
-      // 3. Policy Area Pie Chart
+      // [NEW] 3. Policy Area Pie Chart
       const policyCanvas = document.getElementById('policyPieChart');
       if (policyCanvas) {
         const policyCtx = policyCanvas.getContext('2d');
@@ -1019,7 +1001,6 @@
         });
         _chartInstances.push(cPolicy);
       }
-
       // 4. Comparison Chart (Factor)
       const groupCanvas = document.getElementById('groupComparisonChart');
       if (groupCanvas) {
@@ -1064,7 +1045,6 @@
         });
         _chartInstances.push(c2);
       }
-
       // 5. Mention Bar Chart (Vertical)
       const mentionEl = document.getElementById('mentionBarChart');
       if (mentionEl) {
@@ -1100,15 +1080,12 @@
         });
         _chartInstances.push(c3);
       }
-
       _dashboardInitialized = true;
     }
-
     function resizeDashboardCharts() {
       if (!_chartInstances.length) return;
       _chartInstances.forEach(c => { try { c.resize(); } catch (e) {} });
     }
-
     // Default entry: Home
     document.addEventListener('DOMContentLoaded', function() {
       // 홈에서는 대시보드 초기화하지 않음
