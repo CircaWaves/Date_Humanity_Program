@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>유튜브 댓글 분석 기반 부산 정주·이탈 요인 탐구 | 부산시 대응 평가</title>
+  <meta name="description" content="유튜브 댓글 11,484개 중 공감 3+ 댓글 1,820개를 LLM 후처리로 분류·요약하여 부산 정주/이탈 결정요인을 도출하고, 부산시 공식 진단·전략·재정 구조의 정합성을 평가합니다." />
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#111a33;
+      --muted:#a9b4d0;
+      --text:#eef2ff;
+      --line:rgba(255,255,255,.12);
+      --accent:#7dd3fc;
+      --accent2:#a78bfa;
+      --good:#86efac;
+      --warn:#fde68a;
+      --bad:#fda4af;
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --max: 1120px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", Arial, "Apple SD Gothic Neo", sans-serif;
+      background: radial-gradient(1200px 600px at 15% 0%, rgba(125,211,252,.18), transparent 60%),
+                  radial-gradient(1200px 600px at 85% 10%, rgba(167,139,250,.16), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+
+    /* Nav */
+    .nav{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(11,16,32,.72);
+      border-bottom:1px solid var(--line);
+    }
+    .nav .wrap{display:flex; gap:14px; align-items:center; justify-content:space-between}
+    .brand{display:flex; flex-direction:column; gap:2px}
+    .brand b{letter-spacing:-.2px}
+    .brand small{color:var(--muted)}
+    .menu{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background: rgba(17,26,51,.55);
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      font-size:14px;
+    }
+    .pill:hover{transform: translateY(-1px); border-color: rgba(125,211,252,.45); background: rgba(17,26,51,.8)}
+    .pill strong{font-weight:700}
+
+    /* Hero */
+    .hero{padding:34px 0 8px}
+    .hero-grid{display:grid; grid-template-columns: 1.3fr .7fr; gap:18px}
+    .headline{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(17,26,51,.75), rgba(17,26,51,.45));
+      border-radius: var(--radius);
+      padding:22px;
+      box-shadow: var(--shadow);
+    }
+    h1{margin:0 0 10px; font-size:30px; letter-spacing:-.7px; line-height:1.2}
+    .sub{color:var(--muted); margin:0 0 14px}
+    .badges{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .badge{
+      font-size:13px;
+      padding:8px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+    }
+    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 14px;
+      border-radius: 12px;
+      border:1px solid var(--line);
+      background: rgba(125,211,252,.14);
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      font-weight:700;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(125,211,252,.18); border-color: rgba(125,211,252,.5)}
+    .btn.secondary{background: rgba(167,139,250,.12)}
+    .btn.secondary:hover{background: rgba(167,139,250,.16); border-color: rgba(167,139,250,.55)}
+
+    .sidebar{
+      border:1px solid var(--line);
+      background: rgba(17,26,51,.5);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow);
+    }
+    .kpi{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px}
+    .kpi .card{
+      border:1px solid var(--line);
+      border-radius: 14px;
+      padding:12px;
+      background: rgba(255,255,255,.04);
+    }
+    .kpi .num{font-size:20px; font-weight:800}
+    .kpi .lbl{font-size:12px; color:var(--muted)}
+
+    /* Content */
+    .grid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:18px 0 0}
+    .panel{
+      border:1px solid var(--line);
+      background: rgba(17,26,51,.55);
+      border-radius: var(--radius);
+      padding:18px;
+    }
+    h2{margin:0 0 10px; font-size:18px; letter-spacing:-.3px}
+    .muted{color:var(--muted)}
+
+    .callout{
+      border:1px solid var(--line);
+      border-radius: 14px;
+      padding:14px;
+      background: linear-gradient(180deg, rgba(125,211,252,.10), rgba(255,255,255,.02));
+      margin-top:12px;
+    }
+    .callout b{color:var(--accent)}
+
+    .list{margin:10px 0 0; padding:0; list-style:none}
+    .list li{padding:10px 0; border-top:1px solid var(--line)}
+    .list li:first-child{border-top:0; padding-top:0}
+
+    .mini{
+      display:flex; gap:10px; align-items:flex-start; justify-content:space-between;
+      border-top:1px solid var(--line);
+      padding-top:10px; margin-top:10px;
+    }
+    .chip{font-size:12px; padding:6px 8px; border-radius:999px; border:1px solid var(--line); color:var(--muted)}
+
+    footer{margin:26px 0 30px; color:var(--muted); font-size:12px}
+
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .menu{justify-content:flex-start}
+    }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <div class="wrap">
+      <div class="brand">
+        <b>부산 정주·이탈 결정요인 탐구</b>
+        <small>유튜브 댓글 분석 기반 · 부산시 대응 평가</small>
+      </div>
+      <nav class="menu" aria-label="메인 메뉴">
+        <a class="pill" href="1.html"><strong>데이터보기</strong></a>
+        <a class="pill" href="2.html"><strong>스토리북보기</strong></a>
+        <a class="pill" href="3.html"><strong>영상보기</strong></a>
+        <a class="pill" href="4.html"><strong>심층 분석</strong></a>
+        <a class="pill" href="5.html"><strong>제언</strong></a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="headline">
+          <h1>“부산이 왜 떠나지?”를 <span style="color:var(--accent)">댓글 데이터</span>로 검증하고, <span style="color:var(--accent2)">정책-재정</span> 정합성을 평가합니다.</h1>
+          <p class="sub">
+            KNN·EBS·MBC(2025년 게시) 4개 영상의 댓글 약 11,484개를 수집하고, 공감수 3개 이상 댓글 1,820개를 LLM 후처리로 집단(이탈/정주/고민/외부인/미상) 분류 후,
+            핵심 요인(Factor)·세부 태그(Tag)·감성 분포를 추출했습니다.
+          </p>
+
+          <div class="badges">
+            <span class="badge">데이터: 11,484 → 1,820(공감 3+)</span>
+            <span class="badge">핵심 질문: 떠나는 사람 vs 남는 사람</span>
+            <span class="badge">비교: 시민 체감 ↔ 부산시 문서 진단·전략·재정</span>
+          </div>
+
+          <div class="cta">
+            <a class="btn" href="1.html">데이터 바로 보기 →</a>
+            <a class="btn secondary" href="4.html">심층 분석 읽기 →</a>
+            <a class="btn" href="5.html">정책 제언 보기 →</a>
+          </div>
+
+          <div class="callout" role="note">
+            <b>핵심 한 문장 결론</b><br/>
+            부산시는 인구 유출의 원인을 정확히 진단했지만, 재정은 그 원인을 정면으로 때리기보다 결과(생활 안정·복지)를 관리하는 데 더 많이 쓰고 있다.
+          </div>
+        </div>
+
+        <aside class="sidebar" aria-label="요약 지표">
+          <h2>요약 지표(분석 결과 발췌)</h2>
+          <p class="muted">아래 값들은 제공된 분석표(1,820개 댓글 기반)에서 추출한 핵심 스냅샷입니다.</p>
+          <div class="kpi">
+            <div class="card">
+              <div class="num">81.96%</div>
+              <div class="lbl">부정 감성 비율(1,486건)</div>
+            </div>
+            <div class="card">
+              <div class="num">70%+</div>
+              <div class="lbl">이탈 그룹 1순위: 경제</div>
+            </div>
+            <div class="card">
+              <div class="num">#1</div>
+              <div class="lbl">가중치 1위: 시정불신(-)</div>
+            </div>
+            <div class="card">
+              <div class="num">≈3%</div>
+              <div class="lbl">일자리 직접연관 재정비중(산업·중소기업·에너지)</div>
+            </div>
+          </div>
+
+          <div class="mini">
+            <div>
+              <div style="font-weight:800">왜 ‘아파트’가 핵심어인가?</div>
+              <div class="muted" style="margin-top:4px">빈출 단어 TOP10에서 ‘아파트’(221회)가 ‘일자리’(79회)보다 약 3배 더 자주 등장합니다.</div>
+            </div>
+            <span class="chip">텍스트 기반 신호</span>
+          </div>
+
+          <div class="mini">
+            <div>
+              <div style="font-weight:800">정책 문서와 댓글의 ‘진단’은 일치</div>
+              <div class="muted" style="margin-top:4px">공식 문서는 청년 순유출·일자리/경제를 핵심 원인으로 규정. 댓글도 “연봉/커리어/기업 부재”를 반복.</div>
+            </div>
+            <span class="chip">정합성(진단)</span>
+          </div>
+
+          <div class="mini">
+            <div>
+              <div style="font-weight:800">그러나 ‘돈의 방향’은 불일치</div>
+              <div class="muted" style="margin-top:4px">일자리·산업 예산은 약 3% 내외, 복지·보육·생활 안정은 40%+라는 구조적 괴리.</div>
+            </div>
+            <span class="chip">정합성(집행)</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="grid" aria-label="랜딩 섹션">
+      <article class="panel">
+        <h2>이 사이트가 답하는 질문</h2>
+        <ul class="list">
+          <li><b>Q1.</b> 어떤 사람들이 부산을 떠나고, 어떤 사람들이 남는가? → 댓글 작성자의 서술을 근거로 <b>집단(이탈/정주/고민/외부인/미상)</b>을 구분하여 비교합니다.</li>
+          <li><b>Q2.</b> 그들이 반복적으로 말하는 ‘핵심 관심사’는 무엇인가? → <b>Factor(경제/정치·행정/사회심리/인프라/교육 등)</b>와 세부 <b>Tag</b>로 구조화합니다.</li>
+          <li><b>Q3.</b> 부산시는 이 관심사에 ‘문서로’ 그리고 ‘돈으로’ 대응하고 있는가? → 공식 진단/전략 워딩과 재정 구조(산업·중소기업·에너지 vs 복지·보육·생활 안정)를 대조합니다.</li>
+        </ul>
+        <div class="callout">
+          <b>접근의 핵심</b><br/>
+          단순 키워드 빈도에 그치지 않고, <b>누가(집단)</b> 무엇을(요인·태그) 어떻게(가중치·감성) 말하는지까지 분해해 ‘체감’을 정책 평가의 입력값으로 사용합니다.
+        </div>
+      </article>
+
+      <article class="panel">
+        <h2>핵심 인사이트 요약</h2>
+        <ul class="list">
+          <li><b>여론 구조:</b> 부정 감성이 압도적(81.96%). 정책 메시지의 “설득력”보다 “신뢰 회복”이 선결 과제임을 시사합니다.</li>
+          <li><b>이탈 vs 정주:</b> 양쪽 모두 1순위는 ‘경제’지만, <b>이탈은 경제에 더 쏠리고</b> 정주는 사회심리/정치·행정 비중이 상대적으로 커집니다.</li>
+          <li><b>세부 원인:</b> 가중치 1위가 <b>시정불신(-)</b>이며, ‘아파트난개발(-)’은 <b>빈도 최다이자 가중치 2위</b>입니다. “일자리만”의 문제가 아니라, <b>도시 성장 방식에 대한 분노</b>가 결합되어 있습니다.</li>
+          <li><b>정책-재정 괴리:</b> 부산시는 청년 유출·일자리/경제를 핵심 원인으로 규정하면서도, 재정은 일자리 직접 연관 분야 비중이 낮고(≈3%), 생활안정·복지 비중이 큽니다(40%+).</li>
+        </ul>
+        <div class="cta" style="margin-top:12px">
+          <a class="btn" href="4.html">심층 분석에서 ‘왜’ 읽기 →</a>
+          <a class="btn secondary" href="5.html">제언에서 ‘어떻게’ 보기 →</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="grid" aria-label="페이지 안내" style="margin-top:18px">
+      <article class="panel">
+        <h2>페이지 구성</h2>
+        <ul class="list">
+          <li><b>데이터보기(1.html)</b> — 수집·정제·분류 기준, 표/지표, 핵심 원인 TOP 리스트를 빠짐없이 제공합니다.</li>
+          <li><b>스토리북보기(2.html)</b> — (차후 구현) 내러티브형 스크롤 스토리.</li>
+          <li><b>영상보기(3.html)</b> — (차후 구현) 발표/다큐 요약·클립.</li>
+          <li><b>심층 분석(4.html)</b> — ‘경제×신뢰×도시개발’의 결합 구조, 정책 문서 진단과 댓글 데이터의 정합성, 예산 구조 불일치의 의미를 해설합니다.</li>
+          <li><b>제언(5.html)</b> — 일자리 중심 재정 재배치, 토지이용 전환, 에이지테크 재정의, 신뢰 회복 거버넌스 등 실행 중심 제안을 제공합니다.</li>
+        </ul>
+      </article>
+
+      <article class="panel">
+        <h2>데이터 기반 정책평가의 기준(이 프로젝트의 ‘채점표’)</h2>
+        <ol class="list" style="list-style:decimal; padding-left:18px">
+          <li><b>진단 적합성</b>: 시가 규정한 문제/원인이 시민 데이터(댓글)와 일치하는가?</li>
+          <li><b>우선순위 일치</b>: 시민이 가장 크게 느끼는 문제(가중치 상위)가 정책 우선순위에 반영되는가?</li>
+          <li><b>재정 정렬</b>: 전략 목표(워딩)가 예산 항목 구성과 비중으로 구현되는가?</li>
+          <li><b>성과 측정 가능성</b>: KPI가 ‘시설/행사’가 아니라 ‘임금·고용·기업 정착’ 등 원인 변수에 연결되는가?</li>
+        </ol>
+        <div class="callout">
+          <b>이 사이트의 목적</b><br/>
+          “무엇이 문제인지”를 감정적으로 주장하는 것이 아니라, <b>시민 체감(댓글) → 공식 진단(문서) → 집행(재정)</b>의 연결선이 어디서 끊기는지 데이터로 보여주는 것입니다.
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      <div>© 2026 부산 정주·이탈 요인 탐구 프로젝트 · 정적 HTML 데모</div>
+      <div style="margin-top:6px">※ 스토리북(2.html), 영상보기(3.html)는 (차후 구현)으로 비워두었습니다.</div>
+    </footer>
+  </main>
+</body>
+</html>
