@@ -4,37 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Busan Insight 2026: 공실의 역설</title>
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- FontAwesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
-
   <style>
     body { font-family: 'Noto Sans KR', sans-serif; background-color: #f8fafc; }
     .page-section { display: none; animation: fadeIn 0.4s ease-out; }
     .page-section.active { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
     /* Marquee Animation for Ticker */
     @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     .animate-marquee { animation: marquee 30s linear infinite; }
     .animate-marquee:hover { animation-play-state: paused; }
-
     .gradient-text { background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .card-hover { transition: all 0.3s ease; }
     .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); }
-
     /* Utility for Persona Toggle */
     .animate-fadeIn { animation: fadeIn 0.5s ease-out; }
   </style>
 </head>
 <body class="text-slate-800">
-
-  <!-- Navbar -->
   <nav class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
@@ -44,13 +34,11 @@
           </div>
           <span class="font-bold text-xl tracking-tight text-slate-900">Busan Insight <span class="text-blue-600">2026</span></span>
         </div>
-        <!-- Desktop Menu -->
         <div class="hidden md:flex space-x-1 items-center">
           <button onclick="navigate('dashboard')" class="nav-item px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-700 transition">데이터 대시보드</button>
           <button onclick="navigate('analysis')" class="nav-item px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-700 transition">심층 분석 Report</button>
           <button onclick="navigate('suggestion')" class="nav-item px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-700 transition">정책 제언</button>
         </div>
-        <!-- Mobile Menu Button -->
         <div class="md:hidden flex items-center">
           <button onclick="toggleMobileMenu()" class="text-slate-600 hover:text-slate-900 focus:outline-none">
             <i class="fa-solid fa-bars text-xl"></i>
@@ -58,7 +46,6 @@
         </div>
       </div>
     </div>
-    <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200">
       <div class="px-2 pt-2 pb-3 space-y-1">
         <button onclick="navigate('dashboard')" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-slate-50">데이터 대시보드</button>
@@ -69,13 +56,11 @@
   </nav>
 
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-screen">
-
-    <!-- 0. HOME -->
+    
     <section id="page-home" class="page-section active">
       <div class="relative rounded-t-3xl overflow-hidden bg-slate-900 text-white shadow-2xl">
         <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1548231336-2244a17a3a9a?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-30"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
-
         <div class="relative z-10 px-6 py-20 md:py-32 text-center">
           <div class="inline-block px-4 py-1.5 rounded-full bg-blue-600/30 border border-blue-400/50 text-blue-300 text-sm font-semibold mb-6 animate-pulse">
             <i class="fa-solid fa-circle-exclamation mr-2"></i>유튜브 댓글 1,812건 분석 리포트
@@ -98,12 +83,9 @@
           </div>
         </div>
       </div>
-
-      <!-- Real Voice Ticker -->
       <div class="w-full bg-slate-900 overflow-hidden py-4 border-t border-slate-800 relative rounded-b-3xl mb-12 shadow-2xl">
         <div class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-slate-900 to-transparent z-10"></div>
         <div class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-slate-900 to-transparent z-10"></div>
-
         <div class="flex animate-marquee whitespace-nowrap gap-6 items-center">
           <div class="bg-slate-800 text-slate-300 px-4 py-2 rounded-full text-sm border border-slate-700 flex items-center">
             <i class="fa-brands fa-youtube text-red-500 mr-2"></i> "일자리만 있으면 내려간다. 부산은 잠만 자는 베드타운이 되었다."
@@ -120,20 +102,11 @@
           <div class="bg-slate-800 text-slate-300 px-4 py-2 rounded-full text-sm border border-slate-700 flex items-center">
             <i class="fa-brands fa-youtube text-red-500 mr-2"></i> "연봉이랑 커리어가 안 되는데 어떻게 남아요..."
           </div>
-          <!-- Cloned Items for Loop -->
-          <div class="bg-slate-800 text-slate-300 px-4 py-2 rounded-full text-sm border border-slate-700 flex items-center">
+           <div class="bg-slate-800 text-slate-300 px-4 py-2 rounded-full text-sm border border-slate-700 flex items-center">
             <i class="fa-brands fa-youtube text-red-500 mr-2"></i> "일자리만 있으면 내려간다. 부산은 잠만 자는 베드타운이 되었다."
-          </div>
-          <div class="bg-slate-800 text-slate-300 px-4 py-2 rounded-full text-sm border border-slate-700 flex items-center">
-            <i class="fa-brands fa-youtube text-red-500 mr-2"></i> "미분양은 세금 깎아주면서, 청년 일자리에 쓸 돈은 없나?"
-          </div>
-          <div class="bg-slate-800 text-slate-300 px-4 py-2 rounded-full text-sm border border-slate-700 flex items-center">
-            <i class="fa-brands fa-youtube text-red-500 mr-2"></i> "발 디딜 틈 없던 부산이 이제는 노인과 빈 아파트만 남았다."
           </div>
         </div>
       </div>
-
-      <!-- 3 Key Stats -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 card-hover">
           <div class="flex items-center justify-between mb-4">
@@ -146,7 +119,6 @@
           </div>
           <p class="text-sm text-slate-500 mt-2">단순 불만이 아닌 <strong>'시정 불신'</strong>이 지배적</p>
         </div>
-
         <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 card-hover">
           <div class="flex items-center justify-between mb-4">
             <h3 class="font-bold text-slate-500 text-sm">핵심 불만 키워드</h3>
@@ -158,7 +130,6 @@
           </div>
           <p class="text-sm text-slate-500 mt-2">댓글 <strong>352건</strong> 언급으로 최다</p>
         </div>
-
         <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 card-hover">
           <div class="flex items-center justify-between mb-4">
             <h3 class="font-bold text-slate-500 text-sm">이탈 그룹의 1순위</h3>
@@ -171,8 +142,6 @@
           <p class="text-sm text-slate-500 mt-2">떠나는 이유는 명확히 <strong>'먹고 사는 문제'</strong></p>
         </div>
       </div>
-
-      <!-- One-line Insight Banner -->
       <div class="mt-10 bg-gradient-to-r from-slate-900 to-blue-900 text-white rounded-2xl p-6 shadow-lg border border-slate-800">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div class="flex items-start gap-3">
@@ -192,7 +161,6 @@
       </div>
     </section>
 
-    <!-- 1. DASHBOARD -->
     <section id="page-dashboard" class="page-section">
       <div class="flex justify-center mb-6">
         <div class="bg-white border border-slate-200 rounded-full px-4 py-2 text-xs font-bold text-slate-600 shadow-sm flex items-center gap-3">
@@ -201,14 +169,12 @@
           <span class="text-slate-400">STEP 2</span> 인사이트 리포트
         </div>
       </div>
-
       <div class="mb-8">
         <h2 class="text-2xl font-bold text-slate-800">데이터 대시보드</h2>
         <p class="text-slate-500">1,812개 댓글에서 나타난 이탈의 이유를 데이터로 먼저 확인합니다.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-        <!-- Chart 1: Sentiment -->
         <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
           <h3 class="font-bold text-lg mb-6 flex items-center gap-2">
             <span class="w-1.5 h-6 bg-red-500 rounded-full"></span>
@@ -222,7 +188,6 @@
                 <span class="text-xs text-red-500 font-bold">Negative</span>
               </div>
             </div>
-
             <div class="flex-1 space-y-3 w-full">
               <div class="bg-slate-50 p-3 rounded-lg flex justify-between items-center border border-slate-100">
                 <div class="flex items-center gap-2">
@@ -255,8 +220,7 @@
             </div>
           </div>
         </div>
-
-        <!-- Chart 2: Comparative Factor & Persona -->
+        
         <div class="flex flex-col gap-6">
           <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex-1">
             <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
@@ -266,8 +230,6 @@
             <canvas id="groupComparisonChart" height="180"></canvas>
             <p class="text-xs text-slate-500 mt-3">※ 그룹별 주요 요인(Factor) 분포(%)</p>
           </div>
-
-          <!-- Interactive Persona -->
           <div class="bg-gradient-to-br from-white to-blue-50 p-6 rounded-2xl shadow-sm border border-blue-100">
             <h3 class="font-bold text-sm text-slate-500 mb-4 text-center tracking-wide uppercase">Interactive Persona</h3>
             <div class="flex justify-center mb-6">
@@ -276,15 +238,11 @@
                 <button onclick="togglePersona('stayer')" id="btn-stayer" class="px-5 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-all">남는 사람</button>
               </div>
             </div>
-
-            <div id="persona-content" class="text-center min-h-[140px] flex items-center justify-center">
-              <!-- Dynamic Content Loaded via JS -->
-            </div>
+            <div id="persona-content" class="text-center min-h-[140px] flex items-center justify-center"></div>
           </div>
         </div>
       </div>
 
-      <!-- 정치/행정 불만 세부 TOP3 (SSOT 정합) -->
       <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 mb-8">
         <div class="flex items-center justify-between mb-5">
           <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
@@ -333,9 +291,36 @@
         </div>
       </div>
 
-      <!-- Table & Insight Visual -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
+              <span class="w-1.5 h-6 bg-indigo-600 rounded-full"></span>
+              전체 태그(Tags) 언급 비중
+            </h3>
+            <span class="text-xs bg-indigo-50 text-indigo-700 px-2 py-1 rounded font-bold">Top 7 + 기타</span>
+          </div>
+          <div class="h-64 relative">
+            <canvas id="tagsPieChart"></canvas>
+          </div>
+          <p class="text-center text-xs text-slate-400 mt-4">※ 상위 7개 외 소수 의견은 '기타'로 통합</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
+              <span class="w-1.5 h-6 bg-teal-500 rounded-full"></span>
+              정책 분야(Policy Area)별 분류
+            </h3>
+            <span class="text-xs bg-teal-50 text-teal-700 px-2 py-1 rounded font-bold">Category</span>
+          </div>
+          <div class="h-64 relative">
+            <canvas id="policyPieChart"></canvas>
+          </div>
+          <p class="text-center text-xs text-slate-400 mt-4">※ 댓글이 주로 다루는 정책 의제 영역</p>
+        </div>
+      </div>
+
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <!-- Keywords Table -->
         <div class="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
           <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
             <h3 class="font-bold text-lg text-slate-800">핵심 불만 요인 TOP 5 (언급 횟수 순)</h3>
@@ -384,8 +369,6 @@
             </tbody>
           </table>
         </div>
-
-        <!-- Mention Frequency Visual -->
         <div class="bg-gradient-to-br from-slate-800 to-slate-900 text-white p-6 rounded-2xl shadow-lg flex flex-col justify-center">
           <h3 class="font-bold text-lg mb-2 opacity-90 text-center">사람들의 눈에 비친 부산</h3>
           <p class="text-xs text-slate-300 text-center mb-6">댓글에서 무엇이 더 많이 <span class="font-bold text-white">언급</span>되었나</p>
@@ -400,7 +383,45 @@
         </div>
       </div>
 
-      <!-- Dashboard → Insight CTA -->
+      <div class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8 mb-4">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
+              <span class="w-1.5 h-6 bg-red-500 rounded-full"></span>
+              현장 영상 기록
+            </h3>
+            <span class="text-xs bg-red-50 text-red-600 px-2 py-1 rounded font-bold"><i class="fa-solid fa-play mr-1"></i>Video</span>
+          </div>
+          <div class="rounded-xl overflow-hidden bg-black shadow-inner aspect-video">
+            <video controls class="w-full h-full object-cover">
+              <source src="vid.mp4" type="video/mp4">
+              브라우저가 동영상 재생을 지원하지 않습니다.
+            </video>
+          </div>
+          <p class="text-sm text-slate-500 mt-3 leading-relaxed">
+            부산 원도심 및 신규 아파트 단지의 공실 현황과 시민들의 목소리를 담은 현장 스케치입니다.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2">
+              <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>
+              디지털 스토리북 (9 Pages)
+            </h3>
+            <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded font-bold"><i class="fa-solid fa-book-open mr-1"></i>PDF</span>
+          </div>
+          <div class="rounded-xl overflow-hidden border border-slate-200 bg-slate-50 h-[300px] lg:h-[400px]"> <iframe src="story.pdf" class="w-full h-full" style="border:none;">
+              <p>브라우저가 PDF 미리보기를 지원하지 않습니다. <a href="story.pdf" class="text-blue-600 underline">여기서 다운로드</a>하세요.</p>
+            </iframe>
+          </div>
+           <div class="flex justify-between items-center mt-3">
+            <p class="text-xs text-slate-400">※ 스크롤하여 전체 내용을 확인하세요.</p>
+            <a href="story.pdf" target="_blank" class="text-xs font-bold text-blue-600 hover:underline">새 창에서 열기 <i class="fa-solid fa-external-link-alt"></i></a>
+          </div>
+        </div>
+      </div>
+
       <div class="mt-10 bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-3xl p-8 shadow-sm">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div class="flex items-start gap-4">
@@ -419,7 +440,6 @@
       </div>
     </section>
 
-    <!-- 2. ANALYSIS -->
     <section id="page-analysis" class="page-section">
       <div class="max-w-4xl mx-auto">
         <div class="mb-10 text-center">
@@ -433,8 +453,28 @@
             시민들이 가장 심각하게 여기는 <strong>난개발 피로감</strong>과 정면으로 충돌했습니다.
           </p>
         </div>
-
-        <!-- Executive Summary -->
+        <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200 mb-10">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-xl md:text-2xl font-black text-slate-900 flex items-center gap-3">
+              <span class="w-2 h-7 bg-blue-600 rounded-full"></span>
+              공식 자료로 확인한 사실
+            </h3>
+            <span class="text-xs bg-slate-50 text-slate-600 border border-slate-200 px-3 py-2 rounded-xl font-bold">OFFICIAL EVIDENCE</span>
+          </div>
+          <div id="official-evidence" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+          <div class="mt-6 bg-slate-50 border border-slate-200 rounded-2xl p-5">
+            <details class="group">
+              <summary class="cursor-pointer flex items-center justify-between font-bold text-slate-700">
+                출처(문서명) 보기
+                <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
+              </summary>
+              <div id="official-sources" class="mt-4 text-sm text-slate-600 space-y-3"></div>
+              <p class="mt-4 text-xs text-slate-500 leading-relaxed">
+                ※ 현재는 “자료 1/자료 2”에 정리된 공식 문서 내용을 기반으로 표기했습니다. 원문 URL이 있으면 JS의 OFFICIAL.sources[].url에 넣으면 자동으로 “원문” 링크가 생깁니다.
+              </p>
+            </details>
+          </div>
+        </div>
         <div class="bg-gradient-to-br from-slate-900 to-blue-900 text-white rounded-3xl p-8 md:p-10 shadow-2xl mb-10">
           <div class="flex items-start gap-4">
             <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-2xl">
@@ -470,8 +510,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Analysis Content -->
         <div class="prose prose-lg prose-slate max-w-none text-slate-700">
           <h3 class="font-bold text-2xl text-slate-900 mb-4">불신의 메커니즘 3단계 (Mechanism of Distrust)</h3>
           <p class="mb-8">
@@ -480,7 +518,6 @@
           </p>
 
           <div class="relative border-l-2 border-slate-200 ml-4 space-y-10 pl-8 pb-4">
-            <!-- Step 1 -->
             <div class="relative">
               <div class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-blue-600 border-4 border-white shadow-sm"></div>
               <h4 class="text-xl font-bold text-slate-900 mb-2">1단계: 우선순위의 전도 (Inverted Priorities)</h4>
@@ -489,10 +526,12 @@
                 <p class="text-sm">
                   <span class="font-bold text-blue-600">Insight:</span> 청년 유출의 Root Cause는 '일자리부족(315건)'인데, 체감상 가장 큰 이슈는 '아파트난개발(352건)'로 보입니다. 시민들은 이 엇박자를 1차적인 불신의 원인으로 지목합니다.
                 </p>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="px-2 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-100 text-xs font-bold">공식 근거 O1</span>
+                  <span class="px-2 py-1 rounded-lg bg-indigo-50 text-indigo-700 border border-indigo-100 text-xs font-bold">공식 근거 O2</span>
+                </div>
               </div>
             </div>
-
-            <!-- Step 2 -->
             <div class="relative">
               <div class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-blue-600 border-4 border-white shadow-sm"></div>
               <h4 class="text-xl font-bold text-slate-900 mb-2">2단계: 박탈감의 가속화</h4>
@@ -501,10 +540,12 @@
                 <p class="text-sm">
                   <span class="font-bold text-blue-600">Insight:</span> 인프라 불만 영역에서 '아파트난개발' 비중이 <strong>45.7%</strong>로 압도적입니다. (인프라 분야 TOP1) 반복 목격되는 개발 장면이 체감 박탈감을 빠르게 증폭시킵니다.
                 </p>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="px-2 py-1 rounded-lg bg-amber-50 text-amber-700 border border-amber-100 text-xs font-bold">공식 근거 O3</span>
+                  <span class="px-2 py-1 rounded-lg bg-slate-50 text-slate-700 border border-slate-200 text-xs font-bold">공식 근거 O4</span>
+                </div>
               </div>
             </div>
-
-            <!-- Step 3 -->
             <div class="relative">
               <div class="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-red-500 border-4 border-white shadow-sm"></div>
               <h4 class="text-xl font-bold text-red-600 mb-2">3단계: '유령 도시' 공포의 현실화</h4>
@@ -513,12 +554,13 @@
                 <p class="text-sm">
                   <span class="font-bold text-red-600">Insight:</span> 텅 빈 아파트는 단순한 건물이 아니라 <strong>'도시 소멸의 시각적 증거'</strong>입니다. 이는 잔류 인구에게 '무기력함(언급 69건)'을 학습시키고, 추가 이탈을 부추깁니다.
                 </p>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="px-2 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-100 text-xs font-bold">공식 근거 O1</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- (이하 섹션은 원본 유지) -->
         <div class="mt-12 bg-white rounded-3xl p-8 shadow-sm border border-slate-200">
           <div class="flex items-center justify-between gap-4 mb-6">
             <h3 class="text-xl md:text-2xl font-black text-slate-900 flex items-center gap-3">
@@ -527,13 +569,11 @@
             </h3>
             <span class="text-xs bg-red-50 text-red-700 border border-red-100 px-3 py-2 rounded-xl font-bold">Vicious Cycle</span>
           </div>
-
           <div class="bg-slate-900 text-white rounded-2xl p-6 mb-6">
             <p class="text-sm text-slate-300 font-bold tracking-wider">ONE-LINE CONCLUSION</p>
             <p class="text-2xl md:text-3xl font-black mt-1 leading-snug">"아파트 공급 확대는 인구 대책이 아니라, 인구 유출의 가속 페달이다."</p>
             <p class="text-sm text-slate-200 mt-3">공급을 늘릴수록 공실이 늘고, 공실은 불신을 키우며, 불신은 이탈을 재촉합니다.</p>
           </div>
-
           <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
             <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4">
               <p class="text-xs font-bold text-slate-500">1</p>
@@ -563,7 +603,6 @@
               <p class="text-xs text-red-700/80 mt-2">불신·무기력 강화 → 이탈 고려 집단 확대</p>
             </div>
           </div>
-
           <div class="mt-6 bg-blue-50 border border-blue-100 rounded-2xl p-6">
             <div class="flex items-start gap-3">
               <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center"><i class="fa-solid fa-compass"></i></div>
@@ -571,17 +610,36 @@
                 <h4 class="font-black text-blue-900">데이터가 가리키는 방향</h4>
                 <p class="text-sm text-blue-800 mt-2 leading-relaxed">
                   시민들이 원하는 것은 <strong>살 집(House)</strong>이 아니라,
-                  그 집을 살 수 있게 해줄 <strong>일터(Workplace)</strong>입니다.
+                  그 집을 구매할 능력을 만들어줄 <strong>일터(Workplace)</strong>입니다.
                   따라서 정책의 중심은 <strong>"짓는 행정"</strong>이 아니라 <strong>"채우는 행정"</strong>이어야 합니다.
                 </p>
               </div>
             </div>
           </div>
         </div>
+        
+        <div class="mt-10 bg-gradient-to-r from-blue-900 to-slate-900 text-white rounded-3xl p-8 shadow-xl border border-slate-700">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-clipboard-list"></i>
+              </div>
+              <div>
+                <h3 class="text-2xl font-black">분석은 끝났습니다. 이제 대안을 제시합니다.</h3>
+                <p class="text-slate-300 mt-2 leading-relaxed">
+                  그렇다면 부산시는 어떻게 변해야 할까요?<br />
+                  데이터가 말하는 <strong>3가지 구체적인 정책 제언</strong>을 확인하세요.
+                </p>
+              </div>
+            </div>
+            <button onclick="navigate('suggestion')" class="px-6 py-4 bg-white text-slate-900 hover:bg-blue-50 rounded-2xl font-bold transition flex items-center gap-2 justify-center shadow-lg">
+              <span>정책 제언 보기</span> <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- 3. SUGGESTION (원본 유지) -->
     <section id="page-suggestion" class="page-section">
       <div class="max-w-4xl mx-auto">
         <div class="bg-slate-900 rounded-3xl p-8 md:p-12 mb-12 text-center text-white shadow-2xl">
@@ -591,7 +649,6 @@
             그 집을 구매할 능력을 만들어줄 <strong>일터(Workplace)</strong>가 없기 때문입니다."
           </p>
         </div>
-
         <div class="grid md:grid-cols-2 gap-6">
           <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 md:col-span-2 flex flex-col md:flex-row gap-6 items-start hover:border-blue-500 transition duration-300 group">
             <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-xl group-hover:bg-blue-600 group-hover:text-white transition">
@@ -606,7 +663,6 @@
               </ul>
             </div>
           </div>
-
           <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-green-500 transition duration-300 group">
             <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-600 text-xl mb-4 group-hover:bg-green-600 group-hover:text-white transition">
               <i class="fa-solid fa-robot"></i>
@@ -614,7 +670,6 @@
             <h3 class="text-xl font-bold text-slate-800 mb-2">2. 에이지테크(AgeTech)의 재정의</h3>
             <p class="text-slate-600 text-sm mb-4">'노인 돌봄'을 넘어 청년이 일하고 싶은 '첨단 기술 산업'으로 브랜딩해야 합니다.</p>
           </div>
-
           <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-red-500 transition duration-300 group">
             <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center text-red-600 text-xl mb-4 group-hover:bg-red-600 group-hover:text-white transition">
               <i class="fa-solid fa-handshake-simple"></i>
@@ -623,7 +678,6 @@
             <p class="text-slate-600 text-sm mb-4">모순된 행정을 중단하고, 정책·예산을 투명하게 공개해야 합니다.</p>
           </div>
         </div>
-
         <div class="mt-10 bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-3xl p-8 shadow-sm">
           <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div class="flex items-start gap-4">
@@ -643,10 +697,8 @@
         </div>
       </div>
     </section>
-
   </main>
 
-  <!-- Footer -->
   <footer class="bg-white border-t border-slate-200 py-10 mt-12">
     <div class="max-w-7xl mx-auto px-4 text-center">
       <div class="mb-4"><i class="fa-solid fa-chart-simple text-blue-600 text-2xl"></i></div>
@@ -679,14 +731,143 @@
         jobs: 315,
         polBias: 238,
         depop: 223
+      },
+      tagsDistribution: {
+        labels: ['아파트난개발', '시정불신', '일자리부족', '정치적편향', '인구과소화', '기업부재', '교통불편', '기타'],
+        data: [352, 350, 315, 238, 223, 142, 98, 94],
+        colors: ['#ef4444', '#f97316', '#3b82f6', '#6366f1', '#8b5cf6', '#ec4899', '#14b8a6', '#cbd5e1']
+      },
+      policyArea: {
+        labels: ['경제/일자리/청년', '도시개발/주택', '정치/행정', '교통/인프라', '문화/관광', '기타'],
+        data: [712, 543, 388, 89, 45, 35],
+        colors: ['#3b82f6', '#ef4444', '#f59e0b', '#10b981', '#8b5cf6', '#cbd5e1']
       }
     };
+
+    // ✅ OFFICIAL (자료 1 / 자료 2 기반 공식 근거 카드)
+    const OFFICIAL = {
+      cards: [
+        {
+          id: "O1",
+          tone: "blue",
+          icon: "fa-user-group",
+          title: "공식 진단: 인구 감소의 핵심은 ‘청년 순유출’",
+          bullets: [
+            "청년층(20~34세) 순유출 지속",
+            "생산가능인구 감소",
+            "고용률 정체 / 양질 일자리 비중 낮음"
+          ],
+          quote: "부산 인구 감소의 핵심은 청년층 유출이다.",
+          sourceId: "2026stats01(통계 기준)"
+        },
+        {
+          id: "O2",
+          tone: "indigo",
+          icon: "fa-bullseye",
+          title: "중장기 계획의 문제정의/목표 워딩(그대로 인용)",
+          bullets: [
+            "문제 인식: ‘청년층의 수도권 유출로 인한 지역 인구구조 불균형 심화’",
+            "전략 목표: ‘양질의 일자리 창출을 통한 청년 정착 기반 마련’",
+            "전략 목표: ‘경제 활력 회복을 통한 인구 유출 완화’"
+          ],
+          quote: "공식 문서가 ‘청년 유출(원인: 일자리·경제)’을 이미 규정",
+          sourceId: "부산시 2026~2030 중장기 계획(전략 목표)"
+        },
+        {
+          id: "O3",
+          tone: "amber",
+          icon: "fa-coins",
+          title: "재정 구조(공시) 요약: 진단과 돈의 방향이 어긋남",
+          bullets: [
+            "산업·중소기업·에너지(일자리 직결) 비중: 약 3% 내외",
+            "복지·보육·생활 안정 분야: 40% 이상",
+            "해석: ‘원인 타격’보다 ‘결과 관리’ 지출이 더 큼"
+          ],
+          quote: "원인은 정확히 아는데, 재정은 결과를 관리한다.",
+          sourceId: "2026stats01 + 재정공시(자료 2 정리)"
+        },
+        {
+          id: "O4",
+          tone: "slate",
+          icon: "fa-building",
+          title: "공급측 정책 패키지(속도/혜택/고밀도): 체감 충돌 포인트",
+          bullets: [
+            "인허가 단축: 통합심의로 10개월 → 3개월",
+            "미분양 떠받치기: 준공 후 미분양 취득 시 취득세 최대 50% 감면 추진",
+            "고밀도 허용: 상업지역 주상복합 용적률 완화"
+          ],
+          quote: "시민 눈에는 ‘청년’보다 ‘건설’이 더 빨리 처리된다.",
+          sourceId: "주택 공급 가속화 패키지(자료 1 정리)"
+        }
+      ],
+      sources: [
+        { id: "O1", name: "2026stats01(통계 기준) – 청년층(20~34) 순유출/생산가능인구 감소/고용 정체", ref: "자료 2", url: "" },
+        { id: "O2", name: "부산시 2026~2030 중장기 계획 – 문제정의/전략목표 워딩(‘청년 유출’, ‘양질의 일자리 창출’)", ref: "자료 2", url: "" },
+        { id: "O3", name: "부산시 재정공시(분야별 비중) + 2026stats01 종합 – 산업·중소기업·에너지 약 3% 내외 vs 복지·보육·생활안정 40%+", ref: "자료 2", url: "" },
+        { id: "O4", name: "주택 공급 가속화 패키지 – 통합심의(10→3개월), 미분양 취득세 감면 추진, 용적률 완화", ref: "자료 1", url: "" }
+      ]
+    };
+
+    function renderOfficialEvidence() {
+      const grid = document.getElementById("official-evidence");
+      const list = document.getElementById("official-sources");
+      if (!grid || !list) return;
+      
+      const tone = {
+        blue:   { box: "bg-blue-50 border-blue-100", icon: "text-blue-600", chip: "bg-blue-600/10 text-blue-700 border-blue-200" },
+        indigo: { box: "bg-indigo-50 border-indigo-100", icon: "text-indigo-600", chip: "bg-indigo-600/10 text-indigo-700 border-indigo-200" },
+        amber:  { box: "bg-amber-50 border-amber-100", icon: "text-amber-700", chip: "bg-amber-500/10 text-amber-700 border-amber-200" },
+        slate:  { box: "bg-slate-50 border-slate-200", icon: "text-slate-700", chip: "bg-slate-700/10 text-slate-700 border-slate-300" }
+      };
+
+      grid.innerHTML = OFFICIAL.cards.map(c => {
+        const t = tone[c.tone] || tone.slate;
+        return `
+          <div class="${t.box} border rounded-2xl p-5">
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-white/70 border border-white/60 flex items-center justify-center">
+                  <i class="fa-solid ${c.icon} ${t.icon}"></i>
+                </div>
+                <div>
+                  <p class="text-xs font-black tracking-wider text-slate-500">OFFICIAL</p>
+                  <h4 class="font-black text-slate-900 leading-snug">${c.title}</h4>
+                </div>
+              </div>
+              <span class="px-2 py-1 rounded-lg text-[11px] font-black border ${t.chip}">${c.id}</span>
+            </div>
+            <ul class="text-sm text-slate-700 space-y-1.5 list-disc pl-5">
+              ${c.bullets.map(b => `<li>${b}</li>`).join("")}
+            </ul>
+            <div class="mt-4 bg-white/60 border border-white/70 rounded-xl p-4">
+              <p class="text-sm text-slate-700 italic leading-relaxed">“${c.quote}”</p>
+              <p class="mt-2 text-xs text-slate-500">
+                <span class="font-bold">출처:</span> ${c.sourceId}
+              </p>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      list.innerHTML = OFFICIAL.sources.map(s => {
+        const link = s.url ? ` <a href="${s.url}" target="_blank" class="text-blue-700 font-bold underline">원문</a>` : "";
+        return `
+          <div class="flex items-start gap-3">
+            <span class="px-2 py-1 rounded-lg bg-white border border-slate-200 text-[11px] font-black text-slate-700">${s.id}</span>
+            <div class="flex-1">
+              <p class="font-bold text-slate-800">${s.name}${link}</p>
+              <p class="text-xs text-slate-500 mt-1">근거 표기: ${s.ref}</p>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
 
     // Navigation Logic
     function navigate(pageId) {
       document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
       document.getElementById(`page-${pageId}`).classList.add('active');
-
+      
       // Mobile Menu Close
       document.getElementById('mobile-menu').classList.add('hidden');
 
@@ -695,7 +876,12 @@
         initDashboardIfNeeded();
         resizeDashboardCharts();
       }
-
+      
+      // ✅ Analysis init (Official evidence)
+      if (pageId === 'analysis') {
+        renderOfficialEvidence();
+      }
+      
       window.scrollTo(0, 0);
     }
 
@@ -708,13 +894,12 @@
       const content = document.getElementById('persona-content');
       const btnLeaver = document.getElementById('btn-leaver');
       const btnStayer = document.getElementById('btn-stayer');
-
+      
       if (!content || !btnLeaver || !btnStayer) return;
 
       if (type === 'leaver') {
         btnLeaver.className = "px-5 py-2 rounded-md text-sm font-bold bg-blue-600 text-white shadow-md transition-all";
         btnStayer.className = "px-5 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-all";
-
         content.innerHTML = `
           <div class="animate-fadeIn w-full">
             <div class="text-4xl text-blue-600 mb-3"><i class="fa-solid fa-plane-departure"></i></div>
@@ -731,7 +916,6 @@
       } else {
         btnStayer.className = "px-5 py-2 rounded-md text-sm font-bold bg-slate-700 text-white shadow-md transition-all";
         btnLeaver.className = "px-5 py-2 rounded-md text-sm font-bold text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-all";
-
         content.innerHTML = `
           <div class="animate-fadeIn w-full">
             <div class="text-4xl text-slate-500 mb-3"><i class="fa-solid fa-house-chimney-user"></i></div>
@@ -759,7 +943,7 @@
       // Init Persona
       togglePersona('leaver');
 
-      // 1. Sentiment Chart (Doughnut) - 4분류
+      // 1. Sentiment Chart (Doughnut)
       const sentimentCanvas = document.getElementById('sentimentChart');
       if (sentimentCanvas) {
         const sentimentCtx = sentimentCanvas.getContext('2d');
@@ -783,7 +967,60 @@
         _chartInstances.push(c1);
       }
 
-      // 2. Comparison Chart (Horizontal Bar) - Factor 분포
+      // 2. Tags Pie Chart
+      const tagsCanvas = document.getElementById('tagsPieChart');
+      if (tagsCanvas) {
+        const tagsCtx = tagsCanvas.getContext('2d');
+        const cTags = new Chart(tagsCtx, {
+          type: 'pie',
+          data: {
+            labels: SSOT.tagsDistribution.labels,
+            datasets: [{
+              data: SSOT.tagsDistribution.data,
+              backgroundColor: SSOT.tagsDistribution.colors,
+              borderWidth: 1,
+              borderColor: '#ffffff'
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'right', labels: { boxWidth: 10, font: { size: 11 } } }
+            }
+          }
+        });
+        _chartInstances.push(cTags);
+      }
+
+      // 3. Policy Area Pie Chart
+      const policyCanvas = document.getElementById('policyPieChart');
+      if (policyCanvas) {
+        const policyCtx = policyCanvas.getContext('2d');
+        const cPolicy = new Chart(policyCtx, {
+          type: 'doughnut',
+          data: {
+            labels: SSOT.policyArea.labels,
+            datasets: [{
+              data: SSOT.policyArea.data,
+              backgroundColor: SSOT.policyArea.colors,
+              borderWidth: 0,
+              hoverOffset: 10
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '50%',
+            plugins: {
+              legend: { position: 'right', labels: { boxWidth: 10, font: { size: 11 } } }
+            }
+          }
+        });
+        _chartInstances.push(cPolicy);
+      }
+
+      // 4. Comparison Chart (Factor)
       const groupCanvas = document.getElementById('groupComparisonChart');
       if (groupCanvas) {
         const groupCtx = groupCanvas.getContext('2d');
@@ -828,7 +1065,7 @@
         _chartInstances.push(c2);
       }
 
-      // 3. Mention Bar Chart (Vertical) - 언급 횟수
+      // 5. Mention Bar Chart (Vertical)
       const mentionEl = document.getElementById('mentionBarChart');
       if (mentionEl) {
         const mentionCtx = mentionEl.getContext('2d');
